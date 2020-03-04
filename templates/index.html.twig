@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Task Manager {% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">To-Do Planning</a>
+    </nav>
+
+    <main role="main" class="container">
+
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Developer</th>
+                <th>İş Listesi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for developer in developers %}
+            <tr>
+                <td>{{ developer.username }}</td>
+                <td>
+                    {% for task in developer.tasks %}
+                        {{ task.name }} - <b>{{ task.time }} hafta</b> <br>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+    </main>
+
+{% endblock %}
